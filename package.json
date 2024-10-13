@@ -1,0 +1,18 @@
+{
+  "name": "binance_robot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node futureBot.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "binance-api-node": "^0.12.7",
+    "crypto": "^1.0.1",
+    "technicalindicators": "^3.1.0"
+  }
+}
