@@ -1,5 +1,8 @@
 const Binance = require('axios');
 const crypto = require('crypto');
+const express = require('express');
+const app = express()
+const port = 19389;
 
 // API details for Binance Futures Testnet
 const apiKey = '2cb9761905f2369190eacda2c20359eb3d85d142b7b85f24059dc29f956716cf';
@@ -9,7 +12,7 @@ const baseUrl = 'https://testnet.binancefuture.com';
 const qtyPrc = 0.01; // 1% of current price
 const slPrc = 0.02; // 1% of current price
 const tpPrc = 0.08; // 8% of current price
-const TimeFrame = '1d'; // timeframe 1M 5M 1H
+const TimeFrame = '4h'; // timeframe 1M 5M 1H
 
 let MAShort = 10;
 let MALong = 50;
@@ -364,11 +367,19 @@ async function movingAverageStrategy(symbol, leverage) {
         console.log('No trade signal.');
     }
 }
-console.log("Robot started ");
 
-// Execute the strategy every minute
-setInterval(() => {
-    // Example: Execute the moving average strategy with 10x leverage on BTCUSDT
-    movingAverageStrategy('BTCUSDT', 10);
-    movingAverageStrategy('ETHUSDT', 10);
-}, 60000);  // Runs every minute
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+
+app.listen(port, () => {
+    console.log("Robot started ");
+    console.log(`robot listening on port ${port}`)
+    // Execute the strategy every minute
+    setInterval(() => {
+        // Example: Execute the moving average strategy with 10x leverage on BTCUSDT
+        movingAverageStrategy('BTCUSDT', 10);
+        movingAverageStrategy('ETHUSDT', 10);
+    }, 60000);  // Runs every minute
+})
+
