@@ -9,7 +9,7 @@ const baseUrl = 'https://testnet.binancefuture.com';
 const qtyPrc = 0.01; // 1% of current price
 const slPrc = 0.02; // 1% of current price
 const tpPrc = 0.08; // 8% of current price
-const TimeFrame = '15m'; // timeframe 1M 5M 1H
+const TimeFrame = '1d'; // timeframe 1M 5M 1H
 
 let MAShort = 10;
 let MALong = 50;
